@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salt & Glow Cleaning LLC | Refined Housekeeping Service</title>
+    <meta name="description"
+        content="Premium, meticulous cleaning services for Anne Arundel & Calvert County. Military Spouse Owned, Licensed and Insured. Routine, deep, Airbnb, and commercial cleaning.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <p>Military Spouse Owned • Licensed and Insured • Proudly Serving Anne Arundel & Calvert County</p>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-icon"><i class="fa-solid fa-sparkles"></i></span>
+                Salt & Glow <span>Cleaning LLC.</span>
+            </a>
+            <div class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#about">Why Us</a>
+                <a href="#quote" class="nav-btn">Get Instant Quote</a>
+            </div>
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <span class="subtitle">Refined Housekeeping Service</span>
+            <h1>Meticulous Care. Pristine Results.</h1>
+            <p>Experience the standard of clean you deserve. From routine touch-ups to comprehensive deep cleans.</p>
+            <div class="hero-actions">
+                <a href="#quote" class="btn btn-primary">Get Instant Quote</a>
+                <a href="tel:443-333-9335" class="btn btn-outline"><i class="fa-solid fa-phone"></i> (443) 333-9335</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Services Section -->
+    <section id="services" class="services py-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Services</h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-broom"></i>
+                    </div>
+                    <h3>Routine Cleaning</h3>
+                    <p>Meticulous care on a regular schedule to keep your home consistently fresh and inviting.</p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-hands-bubbles"></i>
+                    </div>
+                    <h3>Deep / Move-In / Move-Out</h3>
+                    <p>A comprehensive, top-to-bottom clean that restores every corner to pristine condition.</p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-bed"></i>
+                    </div>
+                    <h3>Airbnb / Short-Term</h3>
+                    <p>A polished reset between stays, ensuring a welcoming environment for every guest.</p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-building"></i>
+                    </div>
+                    <h3>Commercial Cleaning</h3>
+                    <p>Clean, consistent service to maintain a professional atmosphere for your workspace.</p>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <h3>Hourly Housekeeping & Help</h3>
+                    <p>Minimum of 3 hours at $55/hr. Housekeeping or any type of help around the home.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Split Section: Quote & Why Us -->
+    <section class="booking-section py-section bg-light">
+        <div class="container split-layout">
+
+            <!-- Left Column: Quote & Booking -->
+            <div class="quote-container glass-panel" id="quote">
+                <h2>Schedule a Request</h2>
+                <p class="form-desc">Get an instant estimate and request your preferred date.</p>
+
+                <form id="booking-form">
+
+                    <!-- Instant Quote Engine -->
+                    <div class="form-group row">
+                        <div class="col">
+                            <label for="bedrooms">Bedrooms</label>
+                            <select id="bedrooms" name="bedrooms" required>
+                                <option value="" disabled selected>Select...</option>
+                                <option value="1">1 Bedroom</option>
+                                <option value="2">2 Bedrooms</option>
+                                <option value="3">3 Bedrooms</option>
+                                <option value="4">4 Bedrooms</option>
+                                <option value="5">5 Bedrooms</option>
+                                <option value="6">6+ Bedrooms</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="bathrooms">Bathrooms</label>
+                            <select id="bathrooms" name="bathrooms" required>
+                                <option value="" disabled selected>Select...</option>
+                                <option value="1">1 Bathroom</option>
+                                <option value="1.5">1.5 Bathrooms</option>
+                                <option value="2">2 Bathrooms</option>
+                                <option value="2.5">2.5 Bathrooms</option>
+                                <option value="3">3 Bathrooms</option>
+                                <option value="3.5">3.5 Bathrooms</option>
+                                <option value="4">4 Bathrooms</option>
+                                <option value="4.5">4.5+ Bathrooms</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col">
+                            <label for="sqft">Approx. Sq Ft</label>
+                            <input type="number" id="sqft" name="sqft" placeholder="e.g., 2000" required min="100">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service-type">Service Type</label>
+                        <select id="service-type" name="service-type" required>
+                            <option value="" disabled selected>Select service...</option>
+                            <option value="routine">Routine Cleaning</option>
+                            <option value="deep">Deep Clean / Move</option>
+                            <option value="airbnb">Airbnb Reset</option>
+                            <option value="hourly">Hourly Housekeeping & Help</option>
+                        </select>
+                    </div>
+
+                    <!-- Price Estimate Display -->
+                    <div class="estimate-display" id="estimate-result">
+                        <span class="estimate-label">Estimated Quote:</span>
+                        <span class="estimate-value" id="price-target">--</span>
+                        <small>Final price confirmed upon walkthrough.</small>
+                    </div>
+
+                    <!-- Scheduling -->
+                    <div class="form-group">
+                        <label for="preferred-date">Preferred Date & Time</label>
+                        <input type="datetime-local" id="preferred-date" name="preferred-date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Property Address</label>
+                        <input type="text" id="address" name="address" placeholder="123 Main St, City, State 12345"
+                            required>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label" for="military-discount">
+                            <input type="checkbox" id="military-discount" name="military-discount">
+                            First Responder or Active/Retired Military? (10% Discount)
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Additional Notes</label>
+                        <textarea id="notes" name="notes"
+                            placeholder="Any special requests or details about your home?"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">
+                        Submit Request
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                    <p class="form-notice">Your request will be sent directly to our team, and we will contact you
+                        shortly.</p>
+                </form>
+            </div>
+
+            <!-- Right Column: Why Choose Us -->
+            <div class="why-us-container" id="about">
+                <h2>Why Choose Us?</h2>
+                <div class="divider align-left"></div>
+
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <div>
+                            <h4>Licensed & Insured</h4>
+                            <p>Peace of mind knowing your home and property are fully protected.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa-solid fa-medal"></i>
+                        <div>
+                            <h4>Military Spouse Owned</h4>
+                            <p>We bring dedication, integrity, and meticulous attention to detail to every job.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa-solid fa-heart"></i>
+                        <div>
+                            <h4>Pristine Intentions</h4>
+                            <p>Your sanctuary handled with the utmost care, simply working around your complete
+                                intention.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <h3>Contact Us Directly</h3>
+                    <div class="contact-info">
+                        <a href="tel:443-333-9335" class="contact-link">
+                            <div class="icon-circle"><i class="fa-solid fa-phone"></i></div>
+                            <div>
+                                <span class="label">Call or Text</span>
+                                <span class="value">(443) 333-9335</span>
+                            </div>
+                        </a>
+                        <a href="mailto:saltandglow.clean@gmail.com" class="contact-link">
+                            <div class="icon-circle"><i class="fa-solid fa-envelope"></i></div>
+                            <div>
+                                <span class="label">Email</span>
+                                <span class="value">saltandglow.clean@gmail.com</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <span class="logo-icon"><i class="fa-solid fa-sparkles"></i></span>
+                <h3>Salt & Glow Cleaning LLC</h3>
+                <p>Refined Housekeeping Service</p>
+            </div>
+            <div class="footer-links">
+                <p>Serving Anne Arundel & Calvert County</p>
+                <p>Military Spouse Owned • Licensed and Insured</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Salt & Glow Cleaning LLC. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
