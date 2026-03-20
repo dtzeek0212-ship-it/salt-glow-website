@@ -90,11 +90,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    bedroomsSelect.addEventListener('change', calculateEstimate);
-    bathroomsSelect.addEventListener('change', calculateEstimate);
-    sqftInput.addEventListener('input', calculateEstimate);
-    militaryDiscountCheckbox.addEventListener('change', calculateEstimate);
-    serviceTypeSelect.addEventListener('change', calculateEstimate);
+    if (bedroomsSelect) {
+        bedroomsSelect.addEventListener('change', calculateEstimate);
+        bathroomsSelect.addEventListener('change', calculateEstimate);
+        sqftInput.addEventListener('input', calculateEstimate);
+        militaryDiscountCheckbox.addEventListener('change', calculateEstimate);
+        serviceTypeSelect.addEventListener('change', calculateEstimate);
+    }
 
     // --- Form Submission (Lead Capture via mailto) ---
     const bookingForm = document.getElementById('booking-form');

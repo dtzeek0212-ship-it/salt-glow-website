@@ -119,99 +119,10 @@
         <div class="container split-layout">
 
             <!-- Left Column: Quote & Booking -->
-            <div class="quote-container glass-panel" id="quote">
-                <h2>Schedule a Request</h2>
-                <p class="form-desc">Get an instant estimate and request your preferred date.</p>
-
-                <form id="booking-form">
-
-                    <!-- Instant Quote Engine -->
-                    <div class="form-group row">
-                        <div class="col">
-                            <label for="bedrooms">Bedrooms</label>
-                            <select id="bedrooms" name="bedrooms" required>
-                                <option value="" disabled selected>Select...</option>
-                                <option value="1">1 Bedroom</option>
-                                <option value="2">2 Bedrooms</option>
-                                <option value="3">3 Bedrooms</option>
-                                <option value="4">4 Bedrooms</option>
-                                <option value="5">5 Bedrooms</option>
-                                <option value="6">6+ Bedrooms</option>
-                            </select>
-                        </div>
-                        <div class="col">
-                            <label for="bathrooms">Bathrooms</label>
-                            <select id="bathrooms" name="bathrooms" required>
-                                <option value="" disabled selected>Select...</option>
-                                <option value="1">1 Bathroom</option>
-                                <option value="1.5">1.5 Bathrooms</option>
-                                <option value="2">2 Bathrooms</option>
-                                <option value="2.5">2.5 Bathrooms</option>
-                                <option value="3">3 Bathrooms</option>
-                                <option value="3.5">3.5 Bathrooms</option>
-                                <option value="4">4 Bathrooms</option>
-                                <option value="4.5">4.5+ Bathrooms</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="col">
-                            <label for="sqft">Approx. Sq Ft</label>
-                            <input type="number" id="sqft" name="sqft" placeholder="e.g., 2000" required min="100">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="service-type">Service Type</label>
-                        <select id="service-type" name="service-type" required>
-                            <option value="" disabled selected>Select service...</option>
-                            <option value="routine">Routine Cleaning</option>
-                            <option value="deep">Deep Clean / Move</option>
-                            <option value="airbnb">Airbnb Reset</option>
-                            <option value="hourly">Hourly Housekeeping & Help</option>
-                        </select>
-                    </div>
-
-                    <!-- Price Estimate Display -->
-                    <div class="estimate-display" id="estimate-result">
-                        <span class="estimate-label">Estimated Quote:</span>
-                        <span class="estimate-value" id="price-target">--</span>
-                        <small>Final price confirmed upon walkthrough.</small>
-                    </div>
-
-                    <!-- Scheduling -->
-                    <div class="form-group">
-                        <label for="preferred-date">Preferred Date & Time</label>
-                        <input type="datetime-local" id="preferred-date" name="preferred-date" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="address">Property Address</label>
-                        <input type="text" id="address" name="address" placeholder="123 Main St, City, State 12345"
-                            required>
-                    </div>
-
-                    <div class="form-group checkbox-group">
-                        <label class="checkbox-label" for="military-discount">
-                            <input type="checkbox" id="military-discount" name="military-discount">
-                            First Responder or Active/Retired Military? (10% Discount)
-                        </label>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="notes">Additional Notes</label>
-                        <textarea id="notes" name="notes"
-                            placeholder="Any special requests or details about your home?"></textarea>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary btn-block">
-                        Continue to Zenmaid Booking
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                    <p class="form-notice">You will be redirected to our secure Zenmaid booking portal to select your
-                        date and final options.</p>
-                </form>
+            <div class="quote-container glass-panel" id="quote" style="padding: 1rem; overflow: hidden;">
+                <!-- Zenmaid Booking Widget -->
+                <iframe src="https://app.zenmaid.com/book/b8vye" width="100%" height="900" frameborder="0"
+                    style="border:none; border-radius:8px;"></iframe>
             </div>
 
             <!-- Right Column: Why Choose Us -->
