@@ -123,21 +123,95 @@
                 <h2>Schedule a Request</h2>
                 <p class="form-desc">Get an instant estimate and request your preferred date.</p>
 
-                <!-- Zenmaid Booking Button -->
-                <div
-                    style="text-align: center; padding: 3rem 1rem; background: var(--clr-white); border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-                    <i class="fa-solid fa-calendar-check"
-                        style="font-size: 3rem; color: var(--clr-gold); margin-bottom: 1.5rem;"></i>
-                    <h3 style="margin-bottom: 1rem;">Ready for a Refined Clean?</h3>
-                    <p style="color: var(--clr-text-muted); margin-bottom: 2rem;">Click below to access our secure
-                        booking portal to view availability and request your service.</p>
-                    <a href="https://app.zenmaid.com/book/b8vye"
-                        target="_blank" rel="noopener noreferrer" class="btn btn-primary"
-                        style="font-size: 1.1rem; padding: 1rem 2rem; width: 100%; max-width: 300px; display: inline-block;">
-                        Book Now Securely <i class="fa-solid fa-arrow-up-right-from-square"
-                            style="margin-left: 0.5rem;"></i>
-                    </a>
-                </div>
+                <form id="booking-form">
+
+                    <!-- Instant Quote Engine -->
+                    <div class="form-group row">
+                        <div class="col">
+                            <label for="bedrooms">Bedrooms</label>
+                            <select id="bedrooms" name="bedrooms" required>
+                                <option value="" disabled selected>Select...</option>
+                                <option value="1">1 Bedroom</option>
+                                <option value="2">2 Bedrooms</option>
+                                <option value="3">3 Bedrooms</option>
+                                <option value="4">4 Bedrooms</option>
+                                <option value="5">5 Bedrooms</option>
+                                <option value="6">6+ Bedrooms</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="bathrooms">Bathrooms</label>
+                            <select id="bathrooms" name="bathrooms" required>
+                                <option value="" disabled selected>Select...</option>
+                                <option value="1">1 Bathroom</option>
+                                <option value="1.5">1.5 Bathrooms</option>
+                                <option value="2">2 Bathrooms</option>
+                                <option value="2.5">2.5 Bathrooms</option>
+                                <option value="3">3 Bathrooms</option>
+                                <option value="3.5">3.5 Bathrooms</option>
+                                <option value="4">4 Bathrooms</option>
+                                <option value="4.5">4.5+ Bathrooms</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col">
+                            <label for="sqft">Approx. Sq Ft</label>
+                            <input type="number" id="sqft" name="sqft" placeholder="e.g., 2000" required min="100">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service-type">Service Type</label>
+                        <select id="service-type" name="service-type" required>
+                            <option value="" disabled selected>Select service...</option>
+                            <option value="routine">Routine Cleaning</option>
+                            <option value="deep">Deep Clean / Move</option>
+                            <option value="airbnb">Airbnb Reset</option>
+                            <option value="hourly">Hourly Housekeeping & Help</option>
+                        </select>
+                    </div>
+
+                    <!-- Price Estimate Display -->
+                    <div class="estimate-display" id="estimate-result">
+                        <span class="estimate-label">Estimated Quote:</span>
+                        <span class="estimate-value" id="price-target">--</span>
+                        <small>Final price confirmed upon walkthrough.</small>
+                    </div>
+
+                    <!-- Scheduling -->
+                    <div class="form-group">
+                        <label for="preferred-date">Preferred Date & Time</label>
+                        <input type="datetime-local" id="preferred-date" name="preferred-date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Property Address</label>
+                        <input type="text" id="address" name="address" placeholder="123 Main St, City, State 12345"
+                            required>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label" for="military-discount">
+                            <input type="checkbox" id="military-discount" name="military-discount">
+                            First Responder or Active/Retired Military? (10% Discount)
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Additional Notes</label>
+                        <textarea id="notes" name="notes"
+                            placeholder="Any special requests or details about your home?"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">
+                        Submit Request
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                    <p class="form-notice">Your request will be sent directly to our team, and we will contact you
+                        shortly.</p>
+                </form>
             </div>
 
             <!-- Right Column: Why Choose Us -->
@@ -191,6 +265,82 @@
                 </div>
             </div>
 
+        </div>
+    </section>
+
+    <!-- Client Feedback Section -->
+    <section id="reviews" class="reviews-section py-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Client Feedback</h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="reviews-container">
+                <!-- Overview & Form Column -->
+                <div class="feedback-panel glass-panel">
+                    <div class="rating-overview">
+                        <div class="average-rating">5.0</div>
+                        <div class="rating-stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>Based on our client reviews</p>
+                    </div>
+
+                    <div class="divider align-left"></div>
+
+                    <h3>Rate Your Clean</h3>
+                    <p class="form-desc" style="margin-bottom: 1.5rem;">We value your feedback. Let us know how we did!
+                    </p>
+
+                    <form id="review-form">
+                        <div class="form-group">
+                            <label>Your Rating</label>
+                            <div class="interactive-stars" id="star-rating">
+                                <i class="fa-regular fa-star" data-value="1"></i>
+                                <i class="fa-regular fa-star" data-value="2"></i>
+                                <i class="fa-regular fa-star" data-value="3"></i>
+                                <i class="fa-regular fa-star" data-value="4"></i>
+                                <i class="fa-regular fa-star" data-value="5"></i>
+                            </div>
+                            <input type="hidden" id="rating-value" name="rating" required>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col">
+                                <label for="reviewer-name">Name</label>
+                                <input type="text" id="reviewer-name" name="name" required placeholder="John D.">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="review-text">Your Review</label>
+                            <textarea id="review-text" name="review" required
+                                placeholder="The team did an amazing job..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Submit Review
+                            <i class="fa-solid fa-check" style="margin-left: 0.5rem;"></i>
+                        </button>
+                        <div id="review-success" class="review-success-msg hidden">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <p>Thank you for your feedback! Your review has been submitted.</p>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Showcase Column (Dynamically Populated) -->
+                <div class="reviews-showcase" id="reviews-showcase">
+                    <!-- Reviews will be loaded here from Google Sheets -->
+                    <div style="text-align: center; color: var(--clr-text-muted); padding: 2rem;">
+                        <i class="fa-solid fa-spinner fa-spin"
+                            style="font-size: 2rem; margin-bottom: 1rem; color: var(--clr-taupe);"></i>
+                        <p>Loading recent reviews...</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
