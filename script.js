@@ -101,63 +101,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     bookingForm.addEventListener('submit', (e) => {
         e.preventDefault();
-
-        // For hourly, beds and baths are technically optional but we'll include whatever is selected
-        const bedsText = bedroomsSelect.selectedIndex > 0 ? bedroomsSelect.options[bedroomsSelect.selectedIndex].text : "N/A";
-        const bathsText = bathroomsSelect.selectedIndex > 0 ? bathroomsSelect.options[bathroomsSelect.selectedIndex].text : "N/A";
-        const sqftVal = sqftInput.value;
-        const typeText = serviceTypeSelect.options[serviceTypeSelect.selectedIndex].text;
-        const dateRaw = document.getElementById('preferred-date').value;
-        const address = document.getElementById('address').value;
-        const notes = document.getElementById('notes').value;
-        const currentEstimate = priceTarget.textContent;
-        const isDiscountApplied = militaryDiscountCheckbox.checked ? "Yes (10% Discount Applied)" : "No";
-
-        // Format Date
-        let dateFormatted = "Not Specified";
-        if (dateRaw) {
-            const dateObj = new Date(dateRaw);
-            dateFormatted = dateObj.toLocaleString('en-US', {
-                weekday: 'short',
-                month: 'short',
-                day: 'numeric',
-                hour: 'numeric',
-                minute: 'numeric',
-                hour12: true
-            });
-        }
-
-        // Construct Email Body
-        const subject = encodeURIComponent(`New Cleaning Request: ${typeText}`);
-        const body = encodeURIComponent(`
-Hello Salt & Glow Team,
-
-I would like to request a cleaning service. Here are my details:
-
-Service Request:
-------------------
-Home Size: ${bedsText}, ${bathsText}
-Square Footage: ${sqftVal} sq ft
-Service Type: ${typeText}
-Military/First Responder Discount: ${isDiscountApplied}
-Property Address: ${address}
-Estimated Quote Shown: ${currentEstimate}
-
-Scheduling:
-------------------
-Preferred Date/Time: ${dateFormatted}
-
-Additional Notes:
-------------------
-${notes || "None"}
-
-Please reach out to me to confirm the date and final pricing.
-
-Thank you!
-        `.trim());
-
-        // Open Mail Client
-        window.location.href = `mailto:saltandglow.clean@gmail.com?subject=${subject}&body=${body}`;
+        // Redirect to Zenmaid Booking Portal
+        window.location.href = "https://app.zenmaid.com/book/b8vye";
     });
 
     // --- Client Review Form ---
