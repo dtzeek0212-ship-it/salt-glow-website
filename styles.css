@@ -592,6 +592,36 @@ textarea {
     font-size: 1.1rem;
 }
 
+/* --- About Us Section --- */
+.about-section {
+    background-color: var(--clr-white);
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-image {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-hover);
+    object-fit: cover;
+}
+
+.about-content h3 {
+    font-size: 1.8rem;
+    color: var(--clr-taupe-dark);
+    margin-bottom: 1.5rem;
+}
+
+.about-content p {
+    margin-bottom: 1.25rem;
+    font-size: 1.05rem;
+}
+
 /* --- Footer --- */
 footer {
     background-color: var(--clr-text-dark);
