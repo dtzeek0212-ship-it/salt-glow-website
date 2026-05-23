@@ -107,82 +107,90 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = "https://app.zenmaid.com/book/b8vye";
     });
 
-});
-
-// --- Global Google Maps Callback ---
-window.initGoogleReviews = function() {
+    // --- Google Places API Reviews (New API) ---
     const PLACE_ID = 'ChIJre8aefqmBQkRqqyjDvc9KWk';
+    const API_KEY = 'AIzaSyCv4UzrBIHRCKAf48iw_LphRkUegIya__4';
     const reviewsShowcase = document.getElementById('reviews-showcase');
     const avgRatingDisplay = document.querySelector('.average-rating');
 
-    if (!reviewsShowcase || !window.google || !window.google.maps) {
-        console.error("Google Maps API not loaded properly.");
-        return;
-    }
+    async function fetchAndRenderGoogleReviews() {
+        if (!reviewsShowcase) return;
 
-    const service = new google.maps.places.PlacesService(document.createElement('div'));
-    
-    service.getDetails({
-        placeId: PLACE_ID,
-        fields: ['reviews', 'rating', 'user_ratings_total']
-    }, (place, status) => {
-        if (status === google.maps.places.PlacesServiceStatus.OK && place.reviews) {
-            // Update Overview
-            if (avgRatingDisplay && place.rating) {
-                avgRatingDisplay.textContent = place.rating.toFixed(1);
+        try {
+            const response = await fetch(`https://places.googleapis.com/v1/places/${PLACE_ID}?fields=reviews,rating`, {
+                method: 'GET',
+                headers: {
+                    'X-Goog-Api-Key': API_KEY,
+                    'X-Goog-FieldMask': 'reviews,rating'
+                }
+            });
+            
+            if (!response.ok) {
+                throw new Error(`API Error: ${response.status}`);
             }
 
-            // Render Reviews
-            let html = '';
-            // Google returns up to 5 most helpful reviews
-            place.reviews.forEach(review => {
-                const date = review.relative_time_description;
-                const name = review.author_name;
-                const rating = review.rating;
-                const reviewText = review.text;
-                const photoUrl = review.profile_photo_url;
-                
-                const initial = name ? name.charAt(0).toUpperCase() : 'U';
-                const avatarHtml = photoUrl 
-                    ? `<img src="${photoUrl}" alt="${name}" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">` 
-                    : initial;
+            const place = await response.json();
 
-                let starsHtml = '';
-                for (let j = 0; j < 5; j++) {
-                    if (j < rating) {
-                        starsHtml += '<i class="fa-solid fa-star"></i>';
-                    } else {
-                        starsHtml += '<i class="fa-regular fa-star"></i>';
-                    }
+            if (place.reviews && place.reviews.length > 0) {
+                // Update Overview
+                if (avgRatingDisplay && place.rating) {
+                    avgRatingDisplay.textContent = place.rating.toFixed(1);
                 }
 
-                html += `
-                    <div class="review-card">
-                        <div class="review-header">
-                            <div class="reviewer-avatar" style="overflow:hidden;">${avatarHtml}</div>
-                            <div class="reviewer-info">
-                                <strong>${name}</strong>
-                                <span>Google Reviewer</span>
-                            </div>
-                            <div class="review-date">${date}</div>
-                        </div>
-                        <div class="review-stars">
-                            ${starsHtml}
-                        </div>
-                        <p>"${reviewText}"</p>
-                    </div>
-                `;
-            });
+                // Render Reviews
+                let html = '';
+                place.reviews.forEach(review => {
+                    const date = review.relativePublishTimeDescription;
+                    const name = review.authorAttribution?.displayName || 'Unknown';
+                    const rating = review.rating || 5;
+                    const reviewText = review.text?.text || '';
+                    const photoUrl = review.authorAttribution?.photoUri;
+                    
+                    const initial = name.charAt(0).toUpperCase();
+                    const avatarHtml = photoUrl 
+                        ? `<img src="${photoUrl}" alt="${name}" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">` 
+                        : initial;
 
-            if (html === '') {
-                reviewsShowcase.innerHTML = '<div style="text-align: center; color: var(--clr-text-muted); padding: 2rem;"><p>No reviews yet. Be the first!</p></div>';
-            } else {
+                    let starsHtml = '';
+                    for (let j = 0; j < 5; j++) {
+                        if (j < rating) {
+                            starsHtml += '<i class="fa-solid fa-star"></i>';
+                        } else {
+                            starsHtml += '<i class="fa-regular fa-star"></i>';
+                        }
+                    }
+
+                    html += `
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="reviewer-avatar" style="overflow:hidden;">${avatarHtml}</div>
+                                <div class="reviewer-info">
+                                    <strong>${name}</strong>
+                                    <span>Google Reviewer</span>
+                                </div>
+                                <div class="review-date">${date}</div>
+                            </div>
+                            <div class="review-stars">
+                                ${starsHtml}
+                            </div>
+                            <p>"${reviewText}"</p>
+                        </div>
+                    `;
+                });
+
                 reviewsShowcase.innerHTML = html;
+
+            } else {
+                reviewsShowcase.innerHTML = '<div style="text-align: center; color: var(--clr-text-muted); padding: 2rem;"><p>No reviews yet. Be the first!</p></div>';
             }
 
-        } else {
-            console.error("Failed to fetch Google Reviews:", status);
+        } catch (error) {
+            console.error("Failed to fetch Google Reviews:", error);
             reviewsShowcase.innerHTML = '<div style="text-align: center; color: var(--clr-text-muted); padding: 2rem;"><p>Unable to load reviews at this time.</p></div>';
         }
-    });
-};
+    }
+
+    // Call on load
+    fetchAndRenderGoogleReviews();
+
+});
