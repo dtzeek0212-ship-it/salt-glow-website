@@ -107,88 +107,82 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = "https://app.zenmaid.com/book/b8vye";
     });
 
-    // --- Google Places API Reviews ---
+});
+
+// --- Global Google Maps Callback ---
+window.initGoogleReviews = function() {
     const PLACE_ID = 'ChIJre8aefqmBQkRqqyjDvc9KWk';
     const reviewsShowcase = document.getElementById('reviews-showcase');
     const avgRatingDisplay = document.querySelector('.average-rating');
 
-    function fetchAndRenderGoogleReviews() {
-        if (!reviewsShowcase || !window.google || !window.google.maps) {
-            console.error("Google Maps API not loaded properly.");
-            return;
-        }
+    if (!reviewsShowcase || !window.google || !window.google.maps) {
+        console.error("Google Maps API not loaded properly.");
+        return;
+    }
 
-        const service = new google.maps.places.PlacesService(document.createElement('div'));
-        
-        service.getDetails({
-            placeId: PLACE_ID,
-            fields: ['reviews', 'rating', 'user_ratings_total']
-        }, (place, status) => {
-            if (status === google.maps.places.PlacesServiceStatus.OK && place.reviews) {
-                // Update Overview
-                if (avgRatingDisplay && place.rating) {
-                    avgRatingDisplay.textContent = place.rating.toFixed(1);
-                }
-
-                // Render Reviews
-                let html = '';
-                // Google returns up to 5 most helpful reviews
-                place.reviews.forEach(review => {
-                    const date = review.relative_time_description;
-                    const name = review.author_name;
-                    const rating = review.rating;
-                    const reviewText = review.text;
-                    const photoUrl = review.profile_photo_url;
-                    
-                    const initial = name ? name.charAt(0).toUpperCase() : 'U';
-                    const avatarHtml = photoUrl 
-                        ? `<img src="${photoUrl}" alt="${name}" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">` 
-                        : initial;
-
-                    let starsHtml = '';
-                    for (let j = 0; j < 5; j++) {
-                        if (j < rating) {
-                            starsHtml += '<i class="fa-solid fa-star"></i>';
-                        } else {
-                            starsHtml += '<i class="fa-regular fa-star"></i>';
-                        }
-                    }
-
-                    html += `
-                        <div class="review-card">
-                            <div class="review-header">
-                                <div class="reviewer-avatar" style="overflow:hidden;">${avatarHtml}</div>
-                                <div class="reviewer-info">
-                                    <strong>${name}</strong>
-                                    <span>Google Reviewer</span>
-                                </div>
-                                <div class="review-date">${date}</div>
-                            </div>
-                            <div class="review-stars">
-                                ${starsHtml}
-                            </div>
-                            <p>"${reviewText}"</p>
-                        </div>
-                    `;
-                });
-
-                if (html === '') {
-                    reviewsShowcase.innerHTML = '<div style="text-align: center; color: var(--clr-text-muted); padding: 2rem;"><p>No reviews yet. Be the first!</p></div>';
-                } else {
-                    reviewsShowcase.innerHTML = html;
-                }
-
-            } else {
-                console.error("Failed to fetch Google Reviews:", status);
-                reviewsShowcase.innerHTML = '<div style="text-align: center; color: var(--clr-text-muted); padding: 2rem;"><p>Unable to load reviews at this time.</p></div>';
+    const service = new google.maps.places.PlacesService(document.createElement('div'));
+    
+    service.getDetails({
+        placeId: PLACE_ID,
+        fields: ['reviews', 'rating', 'user_ratings_total']
+    }, (place, status) => {
+        if (status === google.maps.places.PlacesServiceStatus.OK && place.reviews) {
+            // Update Overview
+            if (avgRatingDisplay && place.rating) {
+                avgRatingDisplay.textContent = place.rating.toFixed(1);
             }
-        });
-    }
 
-    // Initialize Reviews once page and Google scripts are loaded
-    if (window.google && window.google.maps) {
-        fetchAndRenderGoogleReviews();
-    } else {
-        window.addEventListener('load', fetchAndRenderGoogleReviews);
-    }
-});
+            // Render Reviews
+            let html = '';
+            // Google returns up to 5 most helpful reviews
+            place.reviews.forEach(review => {
+                const date = review.relative_time_description;
+                const name = review.author_name;
+                const rating = review.rating;
+                const reviewText = review.text;
+                const photoUrl = review.profile_photo_url;
+                
+                const initial = name ? name.charAt(0).toUpperCase() : 'U';
+                const avatarHtml = photoUrl 
+                    ? `<img src="${photoUrl}" alt="${name}" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">` 
+                    : initial;
+
+                let starsHtml = '';
+                for (let j = 0; j < 5; j++) {
+                    if (j < rating) {
+                        starsHtml += '<i class="fa-solid fa-star"></i>';
+                    } else {
+                        starsHtml += '<i class="fa-regular fa-star"></i>';
+                    }
+                }
+
+                html += `
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-avatar" style="overflow:hidden;">${avatarHtml}</div>
+                            <div class="reviewer-info">
+                                <strong>${name}</strong>
+                                <span>Google Reviewer</span>
+                            </div>
+                            <div class="review-date">${date}</div>
+                        </div>
+                        <div class="review-stars">
+                            ${starsHtml}
+                        </div>
+                        <p>"${reviewText}"</p>
+                    </div>
+                `;
+            });
+
+            if (html === '') {
+                reviewsShowcase.innerHTML = '<div style="text-align: center; color: var(--clr-text-muted); padding: 2rem;"><p>No reviews yet. Be the first!</p></div>';
+            } else {
+                reviewsShowcase.innerHTML = html;
+            }
+
+        } else {
+            console.error("Failed to fetch Google Reviews:", status);
+            reviewsShowcase.innerHTML = '<div style="text-align: center; color: var(--clr-text-muted); padding: 2rem;"><p>Unable to load reviews at this time.</p></div>';
+        }
+    });
+};
