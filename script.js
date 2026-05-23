@@ -107,216 +107,88 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = "https://app.zenmaid.com/book/b8vye";
     });
 
-    // --- Client Review Form ---
-    const starRatingContainer = document.getElementById('star-rating');
-    const stars = document.querySelectorAll('.interactive-stars i');
-    const ratingInput = document.getElementById('rating-value');
-    const reviewForm = document.getElementById('review-form');
-    const successMsg = document.getElementById('review-success');
-
-    if (starRatingContainer) {
-        stars.forEach(star => {
-            // Hover effect
-            star.addEventListener('mouseover', function () {
-                const value = parseInt(this.getAttribute('data-value'));
-                stars.forEach(s => {
-                    const sValue = parseInt(s.getAttribute('data-value'));
-                    if (sValue <= value) {
-                        s.classList.replace('fa-regular', 'fa-solid');
-                        s.classList.add('hover');
-                    } else {
-                        s.classList.replace('fa-solid', 'fa-regular');
-                        s.classList.remove('hover');
-                    }
-                });
-            });
-
-            // Mouse out reset
-            star.addEventListener('mouseout', function () {
-                const checkedValue = parseInt(ratingInput.value) || 0;
-                stars.forEach(s => {
-                    const sValue = parseInt(s.getAttribute('data-value'));
-                    s.classList.remove('hover');
-                    if (sValue <= checkedValue) {
-                        s.classList.replace('fa-regular', 'fa-solid');
-                        s.classList.add('active');
-                    } else {
-                        s.classList.replace('fa-solid', 'fa-regular');
-                        s.classList.remove('active');
-                    }
-                });
-            });
-
-            // Click to set value
-            star.addEventListener('click', function () {
-                const value = parseInt(this.getAttribute('data-value'));
-                ratingInput.value = value;
-                stars.forEach(s => {
-                    const sValue = parseInt(s.getAttribute('data-value'));
-                    if (sValue <= value) {
-                        s.classList.replace('fa-regular', 'fa-solid');
-                        s.classList.add('active');
-                    } else {
-                        s.classList.replace('fa-solid', 'fa-regular');
-                        s.classList.remove('active');
-                    }
-                });
-            });
-        });
-    }
-
-    // --- Global Review Database (Google Sheets + Zapier) ---
-    // Wired to the 'Salt & Glow Reviews' Sheet and Zapier Webhook
-    const REVIEWS_CSV_URL = "https://docs.google.com/spreadsheets/d/1W8hj0coM0TtzBQNR2rC0BaAwG4wt05mqbBlzOIsryvM/export?format=csv";
-    const ZAPIER_WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/26848535/upz0b3q/";
-
+    // --- Google Places API Reviews ---
+    const PLACE_ID = 'ChIJre8aefqmBQkRqqyjDvc9KWk';
     const reviewsShowcase = document.getElementById('reviews-showcase');
+    const avgRatingDisplay = document.querySelector('.average-rating');
 
-    // Function to fetch and render reviews globally
-    async function fetchAndRenderReviews() {
-        if (!reviewsShowcase || REVIEWS_CSV_URL === "YOUR_GOOGLE_SHEETS_CSV_URL_HERE") {
-            // Provide a dummy view if not wired up yet
-            reviewsShowcase.innerHTML = '<div style="text-align: center; color: var(--clr-text-muted); padding: 2rem;"><p>Awaiting Database Connection...</p></div>';
+    function fetchAndRenderGoogleReviews() {
+        if (!reviewsShowcase || !window.google || !window.google.maps) {
+            console.error("Google Maps API not loaded properly.");
             return;
         }
 
-        try {
-            const response = await fetch(REVIEWS_CSV_URL);
-            const csvText = await response.text();
+        const service = new google.maps.places.PlacesService(document.createElement('div'));
+        
+        service.getDetails({
+            placeId: PLACE_ID,
+            fields: ['reviews', 'rating', 'user_ratings_total']
+        }, (place, status) => {
+            if (status === google.maps.places.PlacesServiceStatus.OK && place.reviews) {
+                // Update Overview
+                if (avgRatingDisplay && place.rating) {
+                    avgRatingDisplay.textContent = place.rating.toFixed(1);
+                }
 
-            // Split by line
-            const rows = csvText.split('\n').filter(row => row.trim() !== '');
-            let html = '';
-            let totalRating = 0;
-            let validReviews = 0;
+                // Render Reviews
+                let html = '';
+                // Google returns up to 5 most helpful reviews
+                place.reviews.forEach(review => {
+                    const date = review.relative_time_description;
+                    const name = review.author_name;
+                    const rating = review.rating;
+                    const reviewText = review.text;
+                    const photoUrl = review.profile_photo_url;
+                    
+                    const initial = name ? name.charAt(0).toUpperCase() : 'U';
+                    const avatarHtml = photoUrl 
+                        ? `<img src="${photoUrl}" alt="${name}" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">` 
+                        : initial;
 
-            // Skip header row (index 0)
-            for (let i = 1; i < rows.length; i++) {
-                // Parse CSV correctly handling commas inside quotes
-                const cols = rows[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-                if (cols.length < 4) continue;
-
-                const date = cols[0].replace(/^"|"$/g, '').trim();
-                const name = cols[1].replace(/^"|"$/g, '').trim();
-                const rating = parseInt(cols[2].replace(/^"|"$/g, '').trim());
-                const reviewText = cols[3].replace(/^"|"$/g, '').trim() || cols[3].trim();
-
-                if (isNaN(rating)) continue; // skip broken rows
-
-                totalRating += rating;
-                validReviews++;
-
-                const initial = name ? name.charAt(0).toUpperCase() : 'U';
-
-                let starsHtml = '';
-                for (let j = 0; j < 5; j++) {
-                    if (j < rating) {
-                        starsHtml += '<i class="fa-solid fa-star"></i>';
-                    } else {
-                        starsHtml += '<i class="fa-regular fa-star"></i>';
+                    let starsHtml = '';
+                    for (let j = 0; j < 5; j++) {
+                        if (j < rating) {
+                            starsHtml += '<i class="fa-solid fa-star"></i>';
+                        } else {
+                            starsHtml += '<i class="fa-regular fa-star"></i>';
+                        }
                     }
-                }
 
-                // Prepend so newest is on top
-                html = `
-                    <div class="review-card">
-                        <div class="review-header">
-                            <div class="reviewer-avatar">${initial}</div>
-                            <div class="reviewer-info">
-                                <strong>${name}</strong>
-                                <span>Verified Client</span>
+                    html += `
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="reviewer-avatar" style="overflow:hidden;">${avatarHtml}</div>
+                                <div class="reviewer-info">
+                                    <strong>${name}</strong>
+                                    <span>Google Reviewer</span>
+                                </div>
+                                <div class="review-date">${date}</div>
                             </div>
-                            <div class="review-date">${date}</div>
+                            <div class="review-stars">
+                                ${starsHtml}
+                            </div>
+                            <p>"${reviewText}"</p>
                         </div>
-                        <div class="review-stars">
-                            ${starsHtml}
-                        </div>
-                        <p>"${reviewText}"</p>
-                    </div>
-                ` + html;
-            }
-
-            if (html === '') {
-                reviewsShowcase.innerHTML = '<div style="text-align: center; color: var(--clr-text-muted); padding: 2rem;"><p>No reviews yet. Be the first!</p></div>';
-            } else {
-                reviewsShowcase.innerHTML = html;
-
-                // Update the average rating display on the UI
-                const avgRatingDisplay = document.querySelector('.average-rating');
-                if (avgRatingDisplay && validReviews > 0) {
-                    avgRatingDisplay.textContent = (totalRating / validReviews).toFixed(1);
-                }
-            }
-
-        } catch (error) {
-            console.error("Error fetching reviews:", error);
-            reviewsShowcase.innerHTML = '<div style="text-align: center; color: var(--clr-text-muted); padding: 2rem;"><p>Unable to load reviews at this time.</p></div>';
-        }
-    }
-
-    // Call on load
-    fetchAndRenderReviews();
-
-    if (reviewForm) {
-        reviewForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            // Validate rating
-            if (!ratingInput.value) {
-                alert('Please select a star rating before submitting.');
-                return;
-            }
-
-            const nameValue = document.getElementById('reviewer-name').value;
-            const reviewTextValue = document.getElementById('review-text').value;
-            const ratingValue = ratingInput.value;
-            const dateValue = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-
-            // Show loading state
-            const submitBtn = reviewForm.querySelector('button[type="submit"]');
-            const originalBtnHtml = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="margin-right:0.5rem;"></i> Submitting...';
-            submitBtn.disabled = true;
-
-            try {
-                // Send to Zapier Webhook
-                if (ZAPIER_WEBHOOK_URL !== "YOUR_ZAPIER_WEBHOOK_URL_HERE") {
-                    await fetch(ZAPIER_WEBHOOK_URL, {
-                        method: 'POST',
-                        body: JSON.stringify({
-                            date: dateValue,
-                            name: nameValue,
-                            rating: ratingValue,
-                            review: reviewTextValue
-                        })
-                    });
-                }
-
-                // Success UI
-                reviewForm.reset();
-                ratingInput.value = '';
-                stars.forEach(s => {
-                    s.classList.replace('fa-solid', 'fa-regular');
-                    s.classList.remove('active');
+                    `;
                 });
 
-                successMsg.classList.remove('hidden');
+                if (html === '') {
+                    reviewsShowcase.innerHTML = '<div style="text-align: center; color: var(--clr-text-muted); padding: 2rem;"><p>No reviews yet. Be the first!</p></div>';
+                } else {
+                    reviewsShowcase.innerHTML = html;
+                }
 
-                // Hide success message after 5 seconds
-                setTimeout(() => {
-                    successMsg.classList.add('hidden');
-                }, 5000);
-
-                // Optional: Attempt to re-fetch CSV (Google Sheets caching might delay it)
-                setTimeout(fetchAndRenderReviews, 3000);
-
-            } catch (error) {
-                console.error("Error submitting review:", error);
-                alert("There was an error submitting your review. Please try again later.");
-            } finally {
-                submitBtn.innerHTML = originalBtnHtml;
-                submitBtn.disabled = false;
+            } else {
+                console.error("Failed to fetch Google Reviews:", status);
+                reviewsShowcase.innerHTML = '<div style="text-align: center; color: var(--clr-text-muted); padding: 2rem;"><p>Unable to load reviews at this time.</p></div>';
             }
         });
+    }
+
+    // Initialize Reviews once page and Google scripts are loaded
+    if (window.google && window.google.maps) {
+        fetchAndRenderGoogleReviews();
+    } else {
+        window.addEventListener('load', fetchAndRenderGoogleReviews);
     }
 });
