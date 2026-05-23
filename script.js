@@ -98,15 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
         serviceTypeSelect.addEventListener('change', calculateEstimate);
     }
 
-    // --- Form Submission (Lead Capture via mailto) ---
-    const bookingForm = document.getElementById('booking-form');
-
-    bookingForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        // Redirect to Zenmaid Booking Portal
-        window.location.href = "https://app.zenmaid.com/book/b8vye";
-    });
-
     // --- Google Places API Reviews (New API) ---
     const PLACE_ID = 'ChIJre8aefqmBQkRqqyjDvc9KWk';
     const API_KEY = 'AIzaSyCv4UzrBIHRCKAf48iw_LphRkUegIya__4';
