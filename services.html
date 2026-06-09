@@ -66,7 +66,7 @@
             </div>
 
             <!-- Routine Cleaning Table -->
-            <div class="table-container glass-panel" style="margin-bottom: 4rem;">
+            <div id="routine" class="table-container glass-panel" style="margin-bottom: 4rem;">
                 <h3 style="text-align: center; margin-bottom: 0.5rem; font-size: 2rem;"><i class="fa-solid fa-sparkles"></i> Routine Cleaning Services</h3>
                 <p style="text-align: center; color: var(--clr-text-muted); margin-bottom: 2.5rem; max-width: 600px; margin-inline: auto; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase;">
                     Designed to maintain a clean, comfortable, and welcoming home through recurring weekly, bi-weekly, or monthly service.
@@ -103,36 +103,109 @@
             </div>
 
             <!-- Deep Cleaning Table -->
-            <div class="table-container glass-panel">
+            <div id="deep" class="table-container glass-panel" style="margin-bottom: 4rem;">
                 <h3 style="text-align: center; margin-bottom: 0.5rem; font-size: 2rem;"><i class="fa-solid fa-hands-bubbles"></i> Deep Cleaning Services</h3>
-                <p style="text-align: center; color: var(--clr-text-muted); margin-bottom: 2.5rem; max-width: 600px; margin-inline: auto; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase;">
-                    A comprehensive, top-to-bottom clean that restores every corner to pristine condition. Includes everything in Routine Cleaning, plus:
+                <p style="text-align: center; color: var(--clr-text-muted); margin-bottom: 2.5rem; max-width: 800px; margin-inline: auto; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase;">
+                    Every home is different, which is why we offer three levels of deep cleaning. Whether you're looking for a seasonal reset, detailed top-to-bottom cleaning, or a complete home transformation, we'll help you choose the service that's right for you.
                 </p>
                 
                 <div class="table-responsive">
-                    <table class="service-table">
+                    <table class="service-table deep-clean-table">
                         <thead>
                             <tr>
-                                <th style="width: 25%;">Area</th>
-                                <th>Additional Deep Cleaning Tasks</th>
+                                <th style="width: 40%;">Included Service</th>
+                                <th style="text-align: center;">Essential</th>
+                                <th style="text-align: center;">Signature ⭐</th>
+                                <th style="text-align: center;">Transformation</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="area-col">Kitchen</td>
-                                <td>Hand-wash baseboards and detailed wipe of window sills/tracks. Clean inside oven, inside microwave, and spot-clean inside refrigerator. Detailed scrubbing of grout lines and deep cleaning of range hood. Wipe down interior of empty cabinets and drawers.</td>
+                            <!-- BEST FOR ROW -->
+                            <tr style="background-color: var(--clr-cream-base);">
+                                <td class="area-col" style="font-style: italic;">BEST FOR:</td>
+                                <td style="font-size: 0.9rem; text-align: center; color: var(--clr-text-muted);">Well-maintained homes needing a reset</td>
+                                <td style="font-size: 0.9rem; text-align: center; color: var(--clr-text-muted);">First-time clients & seasonal deep cleans</td>
+                                <td style="font-size: 0.9rem; text-align: center; color: var(--clr-text-muted);">Homes needing extra attention & a complete refresh</td>
                             </tr>
+
+                            <!-- WHOLE HOME -->
                             <tr>
-                                <td class="area-col">Bathrooms</td>
-                                <td>Hand-wash baseboards. Intensive scrubbing and descaling of shower walls, tubs, and glass doors to remove buildup. Detailed scrubbing of tile grout. Wipe down interior of empty vanity cabinets and drawers.</td>
+                                <td colspan="4" class="area-col" style="background-color: var(--clr-taupe); color: white; padding: 0.75rem 1rem;">WHOLE HOME</td>
                             </tr>
+                            <tr><td>Cobweb Removal</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                            <tr><td>Dust & Wet-Wipe Ceiling Fans</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                            <tr><td>Dust & Wet-Wipe Light Fixtures</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                            <tr><td>Wet-Wipe Décor & Shelving</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                            <tr><td>Dust Door & Window Trim</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                            <tr><td>Dust Baseboards</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                            <tr><td>Wet-Wipe Baseboards</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                            <tr><td>Light Switches & Door Handles</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                            <tr><td>Move & Clean Under Décor</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                            <tr><td>Window Sills & Ledges</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                            <tr><td>Wet-Wipe Doors & Door Frames</td><td></td><td class="check">✓</td><td class="check">✓</td></tr>
+                            <tr><td>Scrub Baseboards</td><td></td><td class="check">✓</td><td class="check">✓</td></tr>
+                            <tr><td>Spot Clean Walls</td><td></td><td class="check">✓</td><td class="check">✓</td></tr>
+
+                            <!-- BATHROOMS -->
                             <tr>
-                                <td class="area-col">Bedrooms & Living Areas</td>
-                                <td>Hand-wash baseboards and detailed wipe of window sills/tracks. Move light furniture to vacuum/mop underneath. Detail dusting of ceiling fans, AC vents, and blinds. Wipe down all doors and door frames. Vacuum upholstery.</td>
+                                <td colspan="4" class="area-col" style="background-color: var(--clr-taupe); color: white; padding: 0.75rem 1rem;">BATHROOMS</td>
                             </tr>
+                            <tr><td>Sinks & Countertops</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                            <tr><td>Mirrors</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                            <tr><td>Tubs & Showers</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                            <tr><td>Toilets</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                            <tr><td>Bathroom Cabinet Fronts</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                            <tr><td>Descale Showerheads & Faucets</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                            <tr><td>Detailed Shower Door Cleaning</td><td></td><td class="check">✓</td><td class="check">✓</td></tr>
+
+                            <!-- KITCHEN -->
+                            <tr>
+                                <td colspan="4" class="area-col" style="background-color: var(--clr-taupe); color: white; padding: 0.75rem 1rem;">KITCHEN</td>
+                            </tr>
+                            <tr><td>Countertops & Backsplash</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                            <tr><td>Kitchen Cabinet Fronts</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                            <tr><td>Appliance Exteriors</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                            <tr><td>Interior Microwave</td><td></td><td></td><td class="check">✓</td></tr>
+                            <tr><td>Interior Oven</td><td></td><td></td><td class="check">✓</td></tr>
+                            <tr><td>Interior Dishwasher</td><td></td><td></td><td class="check">✓</td></tr>
+                            <tr><td>Interior Refrigerator</td><td></td><td></td><td class="check">✓</td></tr>
+                            <tr><td>Interior Cabinets & Drawers</td><td></td><td></td><td class="check">✓</td></tr>
+                            <tr><td>Move Appliances & Clean Behind/Under</td><td></td><td></td><td class="check">✓</td></tr>
                         </tbody>
                     </table>
                 </div>
+            </div>
+
+            <!-- Move-In / Move-Out Section -->
+            <div id="move-in" class="table-container glass-panel" style="margin-bottom: 4rem;">
+                <h3 style="text-align: center; margin-bottom: 0.5rem; font-size: 2rem;"><i class="fa-solid fa-house-chimney"></i> Move-In / Move-Out Cleaning</h3>
+                <p style="text-align: center; color: var(--clr-text-muted); margin-bottom: 1.5rem; max-width: 800px; margin-inline: auto; line-height: 1.6;">
+                    Ensure a smooth transition with our meticulous move-in/move-out cleaning. Designed to prepare an empty home for its next chapter, we focus on deep cleaning every surface. We cover everything from inside empty cabinets and closets to baseboards, appliances, and high-touch areas, giving you complete peace of mind for a fresh start.
+                </p>
+            </div>
+
+            <!-- Commercial & Airbnb Section -->
+            <div id="commercial" class="table-container glass-panel" style="margin-bottom: 4rem;">
+                <h3 style="text-align: center; margin-bottom: 0.5rem; font-size: 2rem;"><i class="fa-solid fa-building"></i> Commercial & Airbnb Cleaning</h3>
+                <p style="text-align: center; color: var(--clr-text-muted); margin-bottom: 1.5rem; max-width: 800px; margin-inline: auto; line-height: 1.6;">
+                    Elevate your property's professional image. Whether it's an office, church facility, or a short-term vacation rental, we provide reliable, high-standard cleaning tailored precisely to your schedule. We ensure a spotless, welcoming environment that consistently impresses your guests, clients, and staff alike.
+                </p>
+            </div>
+
+            <!-- Organization Services Section -->
+            <div id="organization" class="table-container glass-panel" style="margin-bottom: 4rem;">
+                <h3 style="text-align: center; margin-bottom: 0.5rem; font-size: 2rem;"><i class="fa-solid fa-boxes-stacked"></i> Organization Services</h3>
+                <p style="text-align: center; color: var(--clr-text-muted); margin-bottom: 1.5rem; max-width: 800px; margin-inline: auto; line-height: 1.6;">
+                    Reclaim your space and simplify your everyday routines. Our thoughtful organization solutions help you declutter and optimize your home. We work with you to create functional, aesthetically pleasing storage systems that look beautiful and are incredibly easy for your family to maintain long-term.
+                </p>
+            </div>
+
+            <!-- Donation & Item Removal Section -->
+            <div id="donation" class="table-container glass-panel">
+                <h3 style="text-align: center; margin-bottom: 0.5rem; font-size: 2rem;"><i class="fa-solid fa-truck-ramp-box"></i> Donation & Item Removal</h3>
+                <p style="text-align: center; color: var(--clr-text-muted); margin-bottom: 1.5rem; max-width: 800px; margin-inline: auto; line-height: 1.6;">
+                    Clearing out unwanted items shouldn't be a burden. We assist with the heavy lifting by helping you sort, bag, and coordinate the responsible donation or disposal of household items. Our goal is to make your decluttering process entirely stress-free, ensuring items find a good second home whenever possible.
+                </p>
             </div>
         </div>
     </section>

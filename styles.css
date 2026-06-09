@@ -343,6 +343,9 @@ a {
     text-align: center;
     transition: var(--transition);
     border: 1px solid var(--clr-border);
+    display: block;
+    color: var(--clr-text-dark);
+    text-decoration: none;
 }
 
 .service-card:hover {
@@ -880,6 +883,13 @@ footer {
 
 .service-table tbody tr:hover td {
     background-color: var(--clr-cream-base);
+}
+
+.deep-clean-table td.check {
+    font-weight: bold;
+    color: var(--clr-gold);
+    font-size: 1.2rem;
+    text-align: center;
 }
 
 /* --- Salt & Glow Difference Pillars --- */
