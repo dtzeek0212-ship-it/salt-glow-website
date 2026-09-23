@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>We're Hiring | Salt &amp; Glow Cleaning LLC</title>
+  <meta name="description" content="Join the Salt & Glow Cleaning team in Deale, MD. Part-time and full-time cleaning positions across Anne Arundel and Calvert County. Apply online in about 3 minutes.">
+
+  <!-- Social media link preview (Facebook, Instagram, Nextdoor, texts) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://saltandglowcleaning.com/careers.html">
+  <meta property="og:title" content="We're Hiring | Salt & Glow Cleaning LLC">
+  <meta property="og:description" content="Family-run, military spouse owned cleaning company in Deale, MD. Part-time and full-time positions. Apply online in about 3 minutes.">
+  <meta property="og:image" content="https://saltandglowcleaning.com/images/IMG_0061.JPG">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --sg-navy: #1c2b3a;
+      --sg-navy-2: #26384b;
+      --sg-gold: #b8955a;
+      --sg-gold-soft: #d9c39a;
+      --sg-cream: #faf6ee;
+      --sg-ink: #1c2b3a;
+      --sg-muted: #5b6673;
+      --sg-error: #a3362c;
+      --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+      --sans: "Lato", "Helvetica Neue", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body { font-family: var(--sans); background: var(--sg-navy); color: var(--sg-cream); }
+
+    .sg-top {
+      background: var(--sg-cream);
+      border-bottom: 1px solid #e6dcc8;
+      padding: calc(14px + env(safe-area-inset-top, 0px)) 20px 14px;
+    }
+    .sg-top__in { max-width: 1080px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    .sg-top__brand { font-family: var(--serif); font-size: 1.5rem; font-weight: 600; color: var(--sg-navy); text-decoration: none; }
+    .sg-top__brand small { display: block; font-family: var(--sans); font-size: .72rem; font-weight: 600; color: var(--sg-gold); letter-spacing: .04em; }
+    .sg-top__links { display: flex; gap: 18px; align-items: center; }
+    .sg-top__links a { color: var(--sg-navy); text-decoration: none; font-weight: 600; font-size: .92rem; }
+    .sg-top__links a:hover { text-decoration: underline; }
+    @media (max-width: 520px) { .sg-top__links a.sg-hide-sm { display: none; } }
+
+    .sg-hire { padding: 64px 20px 80px; }
+    .sg-hire__wrap { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.35fr; gap: 48px; align-items: start; }
+    .sg-hire__intro { padding-top: 24px; }
+    .sg-hire__arch { width: 88px; height: 44px; border: 1.5px solid var(--sg-gold); border-bottom: none; border-radius: 88px 88px 0 0; margin-bottom: 20px; position: relative; }
+    .sg-hire__arch::after { content: ""; position: absolute; left: 8px; right: 8px; top: 8px; bottom: 0; border: 1px solid var(--sg-gold-soft); border-bottom: none; border-radius: 72px 72px 0 0; }
+    .sg-hire h1 { font-family: var(--serif); font-size: clamp(2.4rem, 5vw, 3.4rem); font-weight: 500; line-height: 1.06; margin: 0 0 16px; }
+    .sg-hire__lede { font-size: 1.05rem; line-height: 1.65; color: #dfe3e8; max-width: 38ch; margin: 0 0 28px; }
+    .sg-hire__offer { list-style: none; padding: 0; margin: 0 0 28px; }
+    .sg-hire__offer li { padding: 12px 0 12px 22px; border-top: 1px solid rgba(217,195,154,.25); position: relative; line-height: 1.5; color: #eef0f2; }
+    .sg-hire__offer li::before { content: ""; position: absolute; left: 2px; top: 19px; width: 7px; height: 7px; background: var(--sg-gold); transform: rotate(45deg); }
+    .sg-hire__offer li:last-child { border-bottom: 1px solid rgba(217,195,154,.25); }
+    .sg-hire__note { font-size: .92rem; color: var(--sg-gold-soft); line-height: 1.55; margin: 0; }
+    .sg-hire__note a { color: var(--sg-gold-soft); }
+
+    .sg-hire__card { background: var(--sg-cream); color: var(--sg-ink); border-radius: 6px; padding: 36px 32px; border-top: 4px solid var(--sg-gold); }
+    .sg-hire__card h2 { font-family: var(--serif); font-size: 1.7rem; font-weight: 600; margin: 0 0 4px; }
+    .sg-hire__card > form > p, .sg-hire__card > p { margin: 0 0 24px; color: var(--sg-muted); font-size: .95rem; line-height: 1.5; }
+    fieldset { border: 0; padding: 0; margin: 0 0 22px; }
+    legend { font-weight: 700; font-size: 1rem; color: var(--sg-navy); padding: 0 0 10px; width: 100%; border-bottom: 1px solid #e6dcc8; margin-bottom: 14px; }
+    .sg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .sg-field { display: flex; flex-direction: column; margin-bottom: 14px; }
+    .sg-field > label, .sg-q { font-size: .9rem; font-weight: 700; color: var(--sg-navy); margin-bottom: 6px; }
+    .sg-req { color: var(--sg-gold); }
+    .sg-hint { font-size: .82rem; color: var(--sg-muted); margin-top: 6px; }
+    input[type="text"], input[type="email"], input[type="tel"], input[type="date"], select, textarea {
+      font: inherit; font-size: 1rem; padding: 11px 12px; border: 1px solid #cfc4ae; border-radius: 4px; background: #fff; color: var(--sg-ink); width: 100%;
+    }
+    textarea { min-height: 96px; resize: vertical; }
+    input:focus, select:focus, textarea:focus { outline: 2px solid var(--sg-gold); outline-offset: 1px; border-color: var(--sg-gold); }
+    .sg-choices { display: flex; flex-wrap: wrap; gap: 8px; }
+    .sg-choices label { display: inline-flex; align-items: center; gap: 6px; font-weight: 500; font-size: .95rem; padding: 8px 12px; border: 1px solid #cfc4ae; border-radius: 4px; background: #fff; cursor: pointer; }
+    .sg-choices input { accent-color: var(--sg-navy); margin: 0; }
+    .sg-choices label:has(input:checked) { border-color: var(--sg-navy); background: #eef1f4; }
+    .sg-choices label:has(input:focus-visible) { outline: 2px solid var(--sg-gold); }
+
+    /* Resume upload */
+    .sg-drop { position: relative; border: 1.5px dashed #bfae8c; border-radius: 6px; background: #fff; padding: 22px 16px; text-align: center; cursor: pointer; transition: border-color .15s, background .15s; }
+    .sg-drop:hover, .sg-drop.is-over { border-color: var(--sg-navy); background: #f3f5f7; }
+    .sg-drop input[type="file"] { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+    .sg-drop:focus-within { outline: 2px solid var(--sg-gold); outline-offset: 2px; }
+    .sg-drop__title { font-weight: 700; color: var(--sg-navy); display: block; margin-bottom: 4px; }
+    .sg-drop__sub { font-size: .85rem; color: var(--sg-muted); }
+    .sg-file { display: none; align-items: center; justify-content: space-between; gap: 10px; margin-top: 10px; padding: 10px 12px; background: #eef1f4; border-radius: 4px; font-size: .92rem; }
+    .sg-file.is-on { display: flex; }
+    .sg-file span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .sg-file button { font: inherit; font-size: .85rem; font-weight: 700; background: none; border: 0; color: var(--sg-error); cursor: pointer; padding: 4px; }
+
+    .sg-certify { display: flex; gap: 10px; align-items: flex-start; font-weight: 500; line-height: 1.45; font-size: .95rem; color: var(--sg-ink); }
+    .sg-certify input { margin-top: 3px; accent-color: var(--sg-navy); }
+    .sg-submit { font: inherit; font-weight: 700; font-size: 1rem; width: 100%; padding: 15px 20px; margin-top: 16px; background: var(--sg-navy); color: var(--sg-cream); border: 1px solid var(--sg-navy); border-radius: 4px; cursor: pointer; }
+    .sg-submit:hover { background: var(--sg-navy-2); }
+    .sg-submit:focus-visible { outline: 2px solid var(--sg-gold); outline-offset: 2px; }
+    .sg-submit[disabled] { opacity: .6; cursor: wait; }
+    .sg-msg { margin-top: 14px; font-size: .95rem; line-height: 1.5; color: var(--sg-error); }
+    .sg-hp { position: absolute !important; left: -9999px !important; }
+    .sg-eeo { font-size: .8rem; color: var(--sg-muted); margin: 16px 0 0; line-height: 1.5; }
+
+    .sg-done { text-align: center; padding: 40px 8px; }
+    .sg-done h2 { margin-bottom: 10px; }
+    .sg-done p { color: var(--sg-muted); line-height: 1.6; margin: 0 auto 20px; max-width: 42ch; }
+    .sg-done a { color: var(--sg-navy); font-weight: 700; }
+
+    .sg-foot { background: #152230; color: #b9c1ca; text-align: center; font-size: .85rem; line-height: 1.7; padding: 28px 20px calc(28px + env(safe-area-inset-bottom, 0px)); }
+    .sg-foot a { color: var(--sg-gold-soft); }
+
+    @media (max-width: 860px) { .sg-hire__wrap { grid-template-columns: 1fr; gap: 32px; } .sg-hire__intro { padding-top: 0; } }
+    @media (max-width: 520px) { .sg-hire { padding: 44px 14px 64px; } .sg-hire__card { padding: 28px 18px; } .sg-row { grid-template-columns: 1fr; gap: 0; } }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  </style>
+</head>
+<body>
+
+  <header class="sg-top">
+    <div class="sg-top__in">
+      <a class="sg-top__brand" href="https://saltandglowcleaning.com/">
+        Salt &amp; Glow Cleaning LLC
+        <small>Refined Housekeeping Service</small>
+      </a>
+      <nav class="sg-top__links">
+        <a class="sg-hide-sm" href="https://saltandglowcleaning.com/#about-us">Our Story</a>
+        <a href="https://saltandglowcleaning.com/">Home</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="sg-hire">
+    <div class="sg-hire__wrap">
+
+      <div class="sg-hire__intro">
+        <div class="sg-hire__arch" aria-hidden="true"></div>
+        <h1>We're hiring. Join the Salt &amp; Glow team.</h1>
+        <p class="sg-hire__lede">
+          We're a family-run, military spouse owned company in Deale looking for detail-minded
+          people who take pride in their work and treat every home like their own.
+        </p>
+        <ul class="sg-hire__offer">
+          <li>Competitive pay. We believe in paying our team well.</li>
+          <li>Part-time and full-time schedules, daytime hours</li>
+          <li>Homes across Anne Arundel and Calvert County</li>
+          <li>Training on our top-to-bottom cleaning standards</li>
+          <li>A small team where your work is noticed</li>
+        </ul>
+        <p class="sg-hire__note">Questions first? Call or text <a href="tel:443-333-9335">(443) 333-9335</a>.</p>
+      </div>
+
+      <div class="sg-hire__card" id="sg-card">
+        <form id="sg-form"
+              action="https://formsubmit.co/saltandglow.clean@gmail.com"
+              method="POST"
+              enctype="multipart/form-data"
+              novalidate>
+
+          <h2>Apply to work with us</h2>
+          <p>Takes about 3 minutes. We review every application and reach out if it's a fit.</p>
+
+          <!-- FormSubmit settings -->
+          <input type="hidden" name="_subject" id="sg-subject" value="New job application">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://saltandglowcleaning.com/careers.html?sent=1">
+          <input type="hidden" name="Days available" id="sg-days-out">
+          <input type="text" name="_honey" class="sg-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <fieldset>
+            <legend>About you</legend>
+            <div class="sg-field">
+              <label for="sg-name">Full name <span class="sg-req">*</span></label>
+              <input id="sg-name" name="Full name" type="text" autocomplete="name" required>
+            </div>
+            <div class="sg-row">
+              <div class="sg-field">
+                <label for="sg-phone">Phone <span class="sg-req">*</span></label>
+                <input id="sg-phone" name="Phone" type="tel" autocomplete="tel" required>
+              </div>
+              <div class="sg-field">
+                <label for="sg-email">Email <span class="sg-req">*</span></label>
+                <input id="sg-email" name="email" type="email" autocomplete="email" required>
+              </div>
+            </div>
+            <div class="sg-field">
+              <label for="sg-town">Town you live in <span class="sg-req">*</span></label>
+              <input id="sg-town" name="Town" type="text" autocomplete="address-level2" required>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Requirements</legend>
+            <div class="sg-field">
+              <span class="sg-q" id="q-age">Are you 18 or older? <span class="sg-req">*</span></span>
+              <div class="sg-choices" role="radiogroup" aria-labelledby="q-age">
+                <label><input type="radio" name="18 or older" value="Yes" required> Yes</label>
+                <label><input type="radio" name="18 or older" value="No"> No</label>
+              </div>
+            </div>
+            <div class="sg-field">
+              <span class="sg-q" id="q-drive">Valid driver's license and reliable transportation? <span class="sg-req">*</span></span>
+              <div class="sg-choices" role="radiogroup" aria-labelledby="q-drive">
+                <label><input type="radio" name="License and transportation" value="Yes" required> Yes</label>
+                <label><input type="radio" name="License and transportation" value="No"> No</label>
+              </div>
+            </div>
+            <div class="sg-field">
+              <span class="sg-q" id="q-bg">Willing to complete a background check? <span class="sg-req">*</span></span>
+              <div class="sg-choices" role="radiogroup" aria-labelledby="q-bg">
+                <label><input type="radio" name="Background check OK" value="Yes" required> Yes</label>
+                <label><input type="radio" name="Background check OK" value="No"> No</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Availability</legend>
+            <div class="sg-field">
+              <span class="sg-q" id="q-type">Looking for <span class="sg-req">*</span></span>
+              <div class="sg-choices" role="radiogroup" aria-labelledby="q-type">
+                <label><input type="radio" name="Looking for" value="Part-time" required> Part-time</label>
+                <label><input type="radio" name="Looking for" value="Full-time"> Full-time</label>
+                <label><input type="radio" name="Looking for" value="Either"> Either</label>
+              </div>
+            </div>
+            <div class="sg-field">
+              <span class="sg-q" id="q-days">Days you can work <span class="sg-req">*</span></span>
+              <div class="sg-choices" role="group" aria-labelledby="q-days" id="sg-days">
+                <label><input type="checkbox" value="Mon"> Mon</label>
+                <label><input type="checkbox" value="Tue"> Tue</label>
+                <label><input type="checkbox" value="Wed"> Wed</label>
+                <label><input type="checkbox" value="Thu"> Thu</label>
+                <label><input type="checkbox" value="Fri"> Fri</label>
+                <label><input type="checkbox" value="Sat"> Sat</label>
+              </div>
+            </div>
+            <div class="sg-field">
+              <label for="sg-start">Earliest start date</label>
+              <input id="sg-start" name="Earliest start date" type="date">
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Experience</legend>
+            <div class="sg-field">
+              <label for="sg-exp">Professional cleaning experience <span class="sg-req">*</span></label>
+              <select id="sg-exp" name="Cleaning experience" required>
+                <option value="">Select one</option>
+                <option>None, but eager to learn</option>
+                <option>Less than 1 year</option>
+                <option>1 to 3 years</option>
+                <option>3+ years</option>
+              </select>
+            </div>
+            <div class="sg-field">
+              <label for="sg-work">Recent work history</label>
+              <textarea id="sg-work" name="Recent work history" placeholder="Where you've worked, what you did, and for how long"></textarea>
+            </div>
+            <div class="sg-field">
+              <span class="sg-q" id="q-resume">Resume (optional)</span>
+              <div class="sg-drop" id="sg-drop">
+                <input type="file" id="sg-resume" name="attachment"
+                       accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.heic"
+                       aria-labelledby="q-resume" aria-describedby="sg-resume-hint">
+                <span class="sg-drop__title">Tap to upload your resume</span>
+                <span class="sg-drop__sub">or drag it here</span>
+              </div>
+              <div class="sg-file" id="sg-file" aria-live="polite">
+                <span id="sg-file-name"></span>
+                <button type="button" id="sg-file-clear">Remove</button>
+              </div>
+              <span class="sg-hint" id="sg-resume-hint">PDF, Word, or a photo of your resume. 5 MB max. No resume? No problem, the form above is enough.</span>
+            </div>
+            <div class="sg-field">
+              <label for="sg-why">Why do you want to join Salt &amp; Glow?</label>
+              <textarea id="sg-why" name="Why Salt and Glow"></textarea>
+            </div>
+            <div class="sg-field">
+              <label for="sg-ref">How did you hear about us?</label>
+              <select id="sg-ref" name="Heard about us">
+                <option value="">Select one</option>
+                <option>Facebook</option>
+                <option>Instagram</option>
+                <option>Nextdoor</option>
+                <option>Google</option>
+                <option>Indeed</option>
+                <option>Friend or family</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </fieldset>
+
+          <label class="sg-certify">
+            <input type="checkbox" id="sg-certify">
+            <span>I confirm the information above is true and complete. <span class="sg-req">*</span></span>
+          </label>
+
+          <button type="submit" class="sg-submit" id="sg-submit">Send my application</button>
+          <div class="sg-msg" id="sg-msg" role="alert" aria-live="polite"></div>
+
+          <p class="sg-eeo">Salt &amp; Glow Cleaning LLC is an equal opportunity employer.</p>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="sg-foot">
+    Salt &amp; Glow Cleaning LLC. Serving Anne Arundel &amp; Calvert County.<br>
+    Military Spouse Owned. Licensed and Insured.<br>
+    <a href="https://saltandglowcleaning.com/privacy-policy.html">Privacy Policy</a> |
+    <a href="https://saltandglowcleaning.com/terms-and-conditions.html">Terms &amp; Conditions</a>
+  </footer>
+
+  <script>
+  (function () {
+    var card = document.getElementById("sg-card");
+
+    // Thank-you view after FormSubmit redirects back here
+    if (/[?&]sent=1/.test(location.search)) {
+      card.innerHTML =
+        '<div class="sg-done"><h2>Application sent</h2>' +
+        '<p>Thank you for applying to Salt &amp; Glow. We review every application and will contact you by phone or email if it\'s a fit.</p>' +
+        '<a href="https://saltandglowcleaning.com/">Back to Salt &amp; Glow</a></div>';
+      return;
+    }
+
+    var form = document.getElementById("sg-form");
+    var msg = document.getElementById("sg-msg");
+    var btn = document.getElementById("sg-submit");
+    var file = document.getElementById("sg-resume");
+    var drop = document.getElementById("sg-drop");
+    var fileRow = document.getElementById("sg-file");
+    var fileName = document.getElementById("sg-file-name");
+    var MAX = 5 * 1024 * 1024;
+
+    function fail(text, el) { msg.textContent = text; if (el) el.focus(); }
+
+    function showFile() {
+      var f = file.files && file.files[0];
+      if (!f) { fileRow.classList.remove("is-on"); return; }
+      if (f.size > MAX) {
+        file.value = "";
+        fileRow.classList.remove("is-on");
+        fail("That file is over 5 MB. Try a PDF, or take a smaller photo of your resume.");
+        return;
+      }
+      msg.textContent = "";
+      fileName.textContent = f.name;
+      fileRow.classList.add("is-on");
+    }
+    file.addEventListener("change", showFile);
+    document.getElementById("sg-file-clear").addEventListener("click", function () {
+      file.value = ""; showFile(); file.focus();
+    });
+    ["dragenter", "dragover"].forEach(function (t) {
+      drop.addEventListener(t, function () { drop.classList.add("is-over"); });
+    });
+    ["dragleave", "drop"].forEach(function (t) {
+      drop.addEventListener(t, function () { drop.classList.remove("is-over"); });
+    });
+
+    form.addEventListener("submit", function (e) {
+      msg.textContent = "";
+      var invalid = form.querySelector(":invalid");
+      if (invalid) {
+        e.preventDefault();
+        var box = invalid.closest(".sg-field");
+        var lbl = box ? box.querySelector("label, .sg-q") : null;
+        var name = lbl ? lbl.textContent.replace("*", "").trim() : "all required fields";
+        fail("Please complete: " + name + ".", invalid);
+        return;
+      }
+      var days = Array.prototype.map.call(
+        document.querySelectorAll("#sg-days input:checked"), function (c) { return c.value; }
+      );
+      if (!days.length) {
+        e.preventDefault();
+        fail("Please pick at least one day you can work.", document.querySelector("#sg-days input"));
+        return;
+      }
+      if (!document.getElementById("sg-certify").checked) {
+        e.preventDefault();
+        fail("Please confirm your information is true and complete.", document.getElementById("sg-certify"));
+        return;
+      }
+      document.getElementById("sg-days-out").value = days.join(", ");
+      document.getElementById("sg-subject").value =
+        "New job application: " + document.getElementById("sg-name").value.trim();
+      btn.disabled = true;
+      btn.textContent = file.files && file.files[0] ? "Uploading and sending..." : "Sending...";
+      // Form now submits normally to FormSubmit, which emails it and redirects back with ?sent=1
+    });
+
+    // Re-enable the button if someone comes back with the browser Back button
+    window.addEventListener("pageshow", function () {
+      btn.disabled = false; btn.textContent = "Send my application";
+    });
+  })();
+  </script>
+</body>
+</html>
