@@ -970,3 +970,37 @@ footer {
         padding: 2rem 1.5rem;
     }
 }
+/* --- Footer seal (all pages) --- */
+footer .sg-seal { width: 110px; height: auto; display: block; margin: 0 auto 12px; }
+
+/* --- Mobile layout fixes --- */
+.split-layout > *,
+.about-container > *,
+.reviews-container > * { min-width: 0; }
+
+.contact-link .value { overflow-wrap: anywhere; }
+.icon-circle { flex-shrink: 0; }
+
+@media (max-width: 768px) {
+    .container { padding: 0 1.25rem; }
+
+    .split-layout { grid-template-columns: minmax(0, 1fr); }
+
+    .quote-container.glass-panel { padding: 2rem 1.25rem !important; min-height: 0 !important; }
+
+    .why-us-container h2 { font-size: 2rem; }
+
+    .about-container,
+    .reviews-container {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 2rem;
+    }
+
+    .about-image {
+        max-width: 420px;
+        margin: 0 auto;
+    }
+
+    .contact-card { padding: 1.5rem 1.25rem; }
+    .contact-link .value { font-size: 1rem; }
+}

@@ -185,3 +185,6 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchAndRenderGoogleReviews();
 
 });
+
+// Keep footer copyright year current
+document.querySelectorAll('.sg-year').forEach(function (el) { el.textContent = new Date().getFullYear(); });
