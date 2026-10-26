@@ -4,19 +4,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelector('.nav-links');
 
     if (mobileMenuBtn && navLinks) {
-        mobileMenuBtn.addEventListener('click', () => {
-            const isVisible = navLinks.style.display === 'flex';
-            navLinks.style.display = isVisible ? 'none' : 'flex';
-            navLinks.style.flexDirection = 'column';
-            navLinks.style.position = 'absolute';
-            navLinks.style.top = '100%';
-            navLinks.style.left = '0';
-            navLinks.style.right = '0';
-            navLinks.style.backgroundColor = 'var(--clr-cream-base)';
-            navLinks.style.padding = '1rem';
-            navLinks.style.gap = '1rem';
-            navLinks.style.boxShadow = '0 4px 10px rgba(0,0,0,0.1)';
-        });
+        const label = mobileMenuBtn.querySelector('.menu-label');
+        const icon = mobileMenuBtn.querySelector('i');
+        const setOpen = (open) => {
+            navLinks.classList.toggle('is-open', open);
+            mobileMenuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+            mobileMenuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+            if (label) label.textContent = open ? 'Close' : 'Menu';
+            if (icon) icon.className = open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+        };
+        mobileMenuBtn.addEventListener('click', () => setOpen(!navLinks.classList.contains('is-open')));
+        navLinks.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
     }
 
     // --- Instant Quote Engine ---
