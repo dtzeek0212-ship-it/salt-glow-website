@@ -1128,3 +1128,31 @@ footer .sg-seal { width: 110px; height: auto; display: block; margin: 0 auto 12p
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
     }
 }
+
+/* --- Call / Email buttons inside the phone menu --- */
+.menu-contact { display: none; }
+@media (max-width: 768px) {
+    .nav-links.is-open .menu-contact {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        width: 100%;
+        max-width: 320px;
+        padding-top: 0.75rem;
+        border-top: 1px solid var(--clr-border);
+    }
+    .nav-links .menu-contact-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        padding: 0.75rem 1rem;
+        border-radius: 999px;
+        border: 1.5px solid var(--clr-taupe);
+        background: var(--clr-white);
+        color: var(--clr-text-dark);
+        font-weight: 600;
+        text-decoration: none;
+    }
+    .nav-links .menu-contact-btn i { color: var(--clr-taupe-dark); }
+}
