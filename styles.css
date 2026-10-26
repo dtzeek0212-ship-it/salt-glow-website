@@ -1084,3 +1084,8 @@ footer .sg-seal { width: 110px; height: auto; display: block; margin: 0 auto 12p
     .about-photos { max-width: 420px; margin: 0 auto; }
     .about-image { max-width: none; }
 }
+
+/* Featured before/after */
+.ba-featured { max-width: 760px; margin: 0 auto 2rem; }
+.ba-featured .ba-img img { aspect-ratio: 3 / 4; }
+@media (max-width: 768px) { .ba-featured { margin-bottom: 1.5rem; } }
